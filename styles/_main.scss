@@ -1,0 +1,20 @@
+@import '~normalize.css/normalize.css';
+@import '~antd/dist/antd.css';
+@import './thumbnail';
+
+// * {
+//     border: 1px solid red;
+// }
+
+html {
+    font-size: 62.5%;
+}
+
+.ant-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.ant-list-pagination {
+    text-align: left;
+}
