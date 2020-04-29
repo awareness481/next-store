@@ -50,11 +50,12 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({params}) {
   const res = await fetch(`http://localhost:3004/laptops/${params.id}`).then(res => res.json());
+  
   const laptop = {
     id: res.id,
     name: res.name,
     brand: res.att_brand,
-    cpu: res.att_cpu_details,
+    cpu: res.att_cpu_details ? res.att_cpu_details : 'no details' ,
     image: res.image,
     price: res.price,
     gpu: res.att_gpu,
@@ -66,9 +67,6 @@ export async function getStaticProps({params}) {
     storage: res.att_storage + "GB",
     weight: res.att_weight + " kg"
   }
-
-  
- 
 
   return {
     props: { laptop }

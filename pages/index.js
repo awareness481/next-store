@@ -1,18 +1,18 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import fetch from "node-fetch";
 import LaptopThumbnail from "../components/LaptopThumbnail";
+import FilterInput from '../components/FilterInput';
 import { List } from 'antd';
 
 const Home = ({ laptops }) => {
   // const router = useRouter();
   const [data, setData] = useState("none");
-  const [laptopBrand, setLaptopBrand] = useState("Lenovo");
+  const [laptopBrand, setLaptopBrand] = useState(["lenovo"]);
 
   useEffect(() => {
     const filteredLaptops = laptops.filter((laptop) => {
-      return laptop.brand === laptopBrand;
+      return laptopBrand.indexOf(laptop.brand.toLowerCase()) !== -1;
     });
 
     setData(filteredLaptops);
@@ -24,7 +24,7 @@ const Home = ({ laptops }) => {
         <title>Home</title>
       </Head>
       <div className="select-brand">
-        <label htmlFor="laptop-brand-select">Select a brand:</label>
+        {/* <label htmlFor="laptop-brand-select">Select a brand:</label>
         <select
           name="brand"
           id="laptop-brand-select"
@@ -35,7 +35,8 @@ const Home = ({ laptops }) => {
           <option value="Lenovo">Lenovo</option>
           <option value="Dell">Dell</option>
           <option value="HP">HP</option>
-        </select>
+        </select> */}
+        <FilterInput sendFilters={setLaptopBrand}/>
       </div>
       <div className="results">
         <List 
