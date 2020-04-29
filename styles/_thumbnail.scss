@@ -1,3 +1,11 @@
 .thumbnail {
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid black;
 
+    &__image {
+        margin: auto auto;
+    }
 }

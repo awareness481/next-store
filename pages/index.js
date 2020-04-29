@@ -52,9 +52,11 @@ const Home = ({ laptops }) => {
             <List.Item
               key={item.name}
               extra={
-                <a href={`/laptop/${item.id}`} className="thumbnail" id={item.id} >
-                  <img src={item.image} />
-                </a>
+                <LaptopThumbnail 
+                  name={item.base}
+                  image={item.image}
+                  id={item.id}
+                />
               }
             />)
           }
@@ -72,6 +74,7 @@ export async function getStaticProps() {
     return {
       id: laptop.id,
       name: laptop.name,
+      base: laptop.att_base_name,
       brand: laptop.att_brand,
       image: laptop.image,
     };
